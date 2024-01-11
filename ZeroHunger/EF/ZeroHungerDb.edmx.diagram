@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23c76b90e6374d2aad35507994ce6a2a" Name="Diagram1">
+        <EntityTypeShape EntityType="ZeroHungerModel.FoodDistribute" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.FoodRequest" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.FoodSource" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.NGO" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.Role" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.User" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="ZeroHungerModel.FK_FoodDistributes_FoodRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHungerModel.FK_FoodDistributes_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHungerModel.FK_FoodRequests_FoodSources" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHungerModel.FK_FoodRequests_NGOs" ManuallyRouted="false" />
+        <AssociationConnector Association="ZeroHungerModel.FK_Users_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

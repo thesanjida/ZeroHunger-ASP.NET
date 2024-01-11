@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ZeroHunger.DTOs.FoodSource.FoodSourceDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Add New Food Source", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Food Source ID")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayName("Created Time")
+        </th>
+        <th>
+            @Html.DisplayName("Updated Time")
+        </th>
+        <th>
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodSourceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @{
+                    var updatedAt = item.UpdatedAt == null ? "Not Yet" : item.UpdatedAt.ToString();
+                }
+                @Html.DisplayFor(modelItem => updatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { foodSourceId = item.FoodSourceId }) |
+                @Html.ActionLink("Detail", "Detail", new { foodSourceId = item.FoodSourceId }) |
+                @Html.ActionLink("Delete", "Delete", new { foodSourceId = item.FoodSourceId })
+            </td>
+        </tr>
+    }
+
+</table>

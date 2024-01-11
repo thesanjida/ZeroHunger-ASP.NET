@@ -1,0 +1,49 @@
+﻿@model ZeroHunger.DTOs.FoodSource.FoodSourceDTO
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update Food Source</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-center vh-100">
+                <div class="bg-white p-3 h-auto">
+                    <div class="d-flex align-items-center justify-content-center flex-column" style="width:300px;">
+                        <span class="fs-3 fw-semibold pb-3">Update Food Source</span>
+                        <span class="text-danger">@Html.ViewBag.Msg</span>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="form-group mt-2 mb-4">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label" })
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter name" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100">Update</button>
+                        </div>
+
+                    }
+                    <span>@Html.ActionLink("Go back to Food Source's list", "Index")</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

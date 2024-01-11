@@ -1,0 +1,46 @@
+﻿
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight:400;
+    color: #333;
+    background: #EFEFEF;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+::-webkit-input-placeholder {
+    font-size: 14px;
+}
+
+:-moz-placeholder {
+    font-size: 14px;
+}
+
+
+
+
+

@@ -1,0 +1,55 @@
+﻿@model ZeroHunger.DTOs.FoodDistribute.FoodDistributesDTO
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create Food Distribute</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-center vh-100">
+                <div class="bg-white p-3 h-auto">
+                    <div class="d-flex align-items-center justify-content-center flex-column" style="width:300px;">
+                        <span class="fs-3 fw-semibold pb-3">Create Food Distribute</span>
+                        <span class="text-danger">@Html.ViewBag.Msg</span>
+                    </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                <div class="form-group mt-2 mb-4">
+                    @Html.LabelFor(model => model.FoodRequestId, "Select Food", htmlAttributes: new { @class = "form-label" })
+                   
+                    @Html.DropDownListFor(model => model.FoodRequestId, new SelectList(ViewBag.FoodRequests, "Id", "CombinedFoodName", "FoodSource.Name"), "Select Food", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FoodRequestId, "", new { @class = "text-danger" })
+                </div>
+
+                        <div class="form-group mt-2 mb-4">
+                            @Html.LabelFor(model => model.UserId, "Select Delivery Man", htmlAttributes: new { @class = "form-label" })
+
+                            @Html.DropDownListFor(model => model.UserId, new SelectList(ViewBag.FoodDistributer, "Id", "Name"), "Select Delivery Man", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100">Assign to Delivery Man</button>
+                        </div>
+
+                    }
+                    <span>@Html.ActionLink("Go back", "Index")</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

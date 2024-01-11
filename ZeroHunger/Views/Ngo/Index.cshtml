@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ZeroHunger.DTOs.NGO.NgoDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<p>
+    @Html.ActionLink("Add New NGO", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApproveDate)
+        </th>
+        <th>
+            @Html.DisplayName("Created Time")
+        </th>
+        <th>
+            @Html.DisplayName("Updated Time")
+        </th>
+        <th>
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @{
+                    var approveDate = item.ApproveDate == null ? "Not Yet" : item.ApproveDate.ToString();
+                }
+                @Html.DisplayFor(modelItem => approveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @{
+                    var updatedAt = item.UpdatedAt == null ? "Not Yet" : item.UpdatedAt.ToString();
+                }
+                @Html.DisplayFor(modelItem => updatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { ngoId = item.NgoId }) |
+                @Html.ActionLink("Detail", "Detail", new { ngoId = item.NgoId }) |
+                @Html.ActionLink("Delete", "Delete", new { ngoId = item.NgoId })
+            </td>
+        </tr>
+    }
+
+</table>

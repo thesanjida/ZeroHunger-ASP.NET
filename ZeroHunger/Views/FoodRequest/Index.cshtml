@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ZeroHunger.DTOs.FoodRequest.FoodRequestDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Food Request ID")
+        </th>
+        <th>
+            @Html.DisplayName("Food Source")
+        </th>
+        <th>
+            @Html.DisplayName("Food Name")
+        </th>
+        <th>
+            @Html.DisplayName("Expire Date")
+        </th>
+        <th>
+            @Html.DisplayName("NGO Name")
+        </th>
+        <th>
+            @Html.DisplayName("Created Time")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th>
+            @Html.DisplayName("Approved Time")
+        </th>
+        <th>
+            @Html.DisplayName("Updated Time")
+        </th>
+        <th>
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodRequestId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodSource.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodNames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGO.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @{
+                    var status = item.Status == false ? "Not Approve" : "Approved";
+                }
+                @Html.DisplayFor(modelItem => status)
+            </td>
+            <td>
+                @{
+                    var approvedTime = item.ApproveDate == null ? "Not Yet" : item.ApproveDate.ToString();
+                }
+                @Html.DisplayFor(modelItem => approvedTime)
+            </td>
+            <td>
+                @{
+                    var updatedAt = item.UpdatedAt == null ? "Not Yet" : item.UpdatedAt.ToString();
+                }
+                @Html.DisplayFor(modelItem => updatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { foodRequestId = item.FoodRequestId }) |
+                @Html.ActionLink("Approve", "MakeApprove", new { foodRequestId = item.FoodRequestId }) |
+                @Html.ActionLink("Delete", "Delete", new { foodRequestId = item.FoodRequestId })
+            </td>
+        </tr>
+    }
+
+</table>

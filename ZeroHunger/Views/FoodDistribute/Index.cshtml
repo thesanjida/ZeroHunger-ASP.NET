@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ZeroHunger.DTOs.FoodDistribute.FoodDistributesDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Food Dist ID")
+        </th>
+        <th>
+            @Html.DisplayName("Food Req ID")
+        </th>
+        <th>
+            @Html.DisplayName("Food Src Nam")
+        </th>
+        <th>
+            @Html.DisplayName("Food")
+        </th>
+        <th>
+            @Html.DisplayName("D Boy ID")
+        </th>
+        <th>
+            @Html.DisplayName("D Boy Name")
+        </th>
+        <th>
+            @Html.DisplayName("Created Time")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th>
+            @Html.DisplayName("Delivery Time")
+        </th>
+        <th>
+            @Html.DisplayName("Updated Time")
+        </th>
+        <th>
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodDistributeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodRequest.FoodRequestId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodRequest.FoodSource.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodRequest.FoodNames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @{
+                    var status = item.Status == false ? "Not Delivered" : "Delivered";
+                }
+                @Html.DisplayFor(modelItem => status)
+            </td>
+            <td>
+                @{
+                    var deliveryDoneDate = item.DeliveryDoneDate == null ? "Not Yet" : item.DeliveryDoneDate.ToString();
+                }
+                @Html.DisplayFor(modelItem => deliveryDoneDate)
+            </td>
+            <td>
+                @{
+                    var updatedAt = item.UpdatedAt == null ? "Not Yet" : item.UpdatedAt.ToString();
+                }
+                @Html.DisplayFor(modelItem => updatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { foodDistributeId = item.FoodDistributeId }) |
+                @if (item.Status == false)
+                {
+                    @Html.ActionLink("Delivery Done", "DeliveryDone", new { foodDistributeId = item.FoodDistributeId }) 
+                }
+                | @Html.ActionLink("Delete", "Delete", new { foodDistributeId = item.FoodDistributeId })
+            </td>
+        </tr>
+    }
+
+</table>
